@@ -10,6 +10,7 @@ export const Colors = {
   primary_container: '#0d2240',
   on_primary: '#ffffff',
   on_primary_fixed: '#051b39',
+  on_primary_container: '#778aad',
 
   secondary: '#4e6180',
   secondary_container: '#d6e3f7',
