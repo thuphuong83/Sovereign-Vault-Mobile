@@ -30,8 +30,13 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   initialize: async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    set({ session, user: session?.user ?? null, isInitialized: true });
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      set({ session, user: session?.user ?? null, isInitialized: true });
+    } catch (error) {
+      console.warn('[Auth] Failed to restore session:', error);
+      set({ session: null, user: null, isInitialized: true });
+    }
 
     supabase.auth.onAuthStateChange((_event, session) => {
       set({ session, user: session?.user ?? null });
