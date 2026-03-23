@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 import { usePortfolioStore } from '@/store/portfolioStore';
 import { Colors, Typography, Spacing, Radius, Shadows } from '@/constants/tokens';
 import { formatCurrency } from '@/lib/format';
@@ -42,6 +43,7 @@ export default function AssetsScreen() {
           </Text>
         </View>
         <Pressable
+          onPress={() => router.push('/(app)/add-asset')}
           style={{
             backgroundColor: Colors.primary,
             borderRadius: Radius.md,
